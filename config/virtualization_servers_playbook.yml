@@ -1,0 +1,6 @@
+---
+- name: Set up virtualization servers
+  hosts: virtualization_servers
+  become: true
+  roles:
+    - incus

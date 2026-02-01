@@ -1,0 +1,23 @@
+---
+- name: Fetch Zabbly GPG key
+  ansible.builtin.get_url:
+    url: https://pkgs.zabbly.com/key.asc
+    dest: /etc/apt/keyrings/zabbly.asc
+    mode: 'u=rw'
+  register: gpg_key
+
+- name: Get architecture for apt repository
+  ansible.builtin.command: dpkg --print-architecture
+  register: dpkg_arch
+  changed_when: false
+
+- name: Add Zabbly Incus stable repository
+  ansible.builtin.template:
+    src: zabbly-incus-stable.sources.j2
+    dest: /etc/apt/sources.list.d/zabbly-incus-stable.sources
+    mode: 'u=rw,go=r'
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    name: incus
+    update_cache: true

@@ -1,0 +1,7 @@
+Enabled: yes
+Types: deb
+URIs: https://pkgs.zabbly.com/incus/stable
+Suites: {{ ansible_distribution_release }}
+Components: main
+Architectures: {{ dpkg_arch.stdout }}
+Signed-By: /etc/apt/keyrings/zabbly.asc
