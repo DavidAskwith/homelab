@@ -8,5 +8,10 @@ resource "incus_instance" "k3s_node" {
     "boot.autostart" = true
     "limits.cpu"     = var.cpu
     "limits.memory"  = "${var.ram_gib}GiB"
+    "cloud-init.user-data" = file("${path.module}/k3s_node_cloud_init.yaml")
+  }
+
+  wait_for {
+    type = "cloud-init"
   }
 }

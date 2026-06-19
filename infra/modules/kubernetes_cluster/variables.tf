@@ -1,3 +1,5 @@
+# All variables are set to min k3s values
+
 variable "node_count" {
   description = "The number of nodes in the cluster"
   type        = number
@@ -7,7 +9,7 @@ variable "node_count" {
 variable "ram_gib" {
   description = "The amount of RAM to allocated each node (in GiB) per node"
   type        = number
-  default     = 3
+  default     = 2
 }
 
 variable "cpu" {
@@ -19,5 +21,5 @@ variable "cpu" {
 variable "storage" {
   description = "The storage (in GiB) per node"
   type        = number
-  default     = 25
+  default     = 10
 }
