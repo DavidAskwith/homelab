@@ -1,4 +1,17 @@
 #cloud-config
 package_update: true
 package_upgrade: true
+packages:
+  - unattended-upgrades
 
+users: []
+
+ssh_pwauth: true # disable password authentication for ssh
+ssh_deletekeys: true # delete existing ssh host keys
+
+# Disable and mask ssh services to prevent ssh access
+runcmd:
+  - [ systemctl, stop, ssh ]
+  - [ systemctl, mask, ssh ]
+  - [ systemctl, stop, sshd ]
+  - [ systemctl, mask, sshd ]
