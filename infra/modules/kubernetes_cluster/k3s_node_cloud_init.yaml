@@ -3,6 +3,7 @@ package_update: true
 package_upgrade: true
 packages:
   - unattended-upgrades
+  - ufw
 
 users: []
 
@@ -15,3 +16,7 @@ runcmd:
   - [ systemctl, mask, ssh ]
   - [ systemctl, stop, sshd ]
   - [ systemctl, mask, sshd ]
+  - [ ufw, default, deny, incoming ]
+  - [ ufw, default, allow, outgoing ]
+  - [ ufw, allow, https ]
+  - [ ufw, --force, enable ]
