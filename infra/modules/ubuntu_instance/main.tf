@@ -1,6 +1,6 @@
 locals {
   image = var.type == "virtual-machine" ? "images:ubuntu/26.04/cloud" : "images:ubuntu/26.04"
-  name = var.instance_count > 1 ? format("${var.name_prefix}-%02d", var.instance_count): var.name_prefix
+  name = format("%s-%s-%02d", var.name_prefix, terraform.workspace, var.instance_count)
 }
 
 resource "incus_instance" "ubuntu_instance" {

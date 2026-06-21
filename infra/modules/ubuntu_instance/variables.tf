@@ -9,7 +9,10 @@ variable "type" {
 }
 
 variable "name_prefix" {
-  description = "The prefix for the instance names (e.g., 'k3s-node') the count will be appended to this prefix (e.g., 'k3s-node-01')"
+  description = <<EOT
+  The prefix for the instance names
+  Instance_count and the workspace will be appended to this prefix along with the environment (e.g. '{prefix}-prd-01')"
+  EOT
   type        = string
   validation {
     condition     = (
