@@ -10,6 +10,6 @@ provider "incus" {
   default_remote = "virt-01"
 
   remote {
-    name    = "virt-01"
+    name = "virt-01"
   }
 }

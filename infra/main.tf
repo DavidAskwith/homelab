@@ -1,4 +1,6 @@
-module "k3s_cluster" {
-  source = "./modules/kubernetes_cluster"
-  node_count = 1
+module "ubuntu_instance" {
+  source         = "./modules/ubuntu_instance"
+  type           = "virtual-machine"
+  name_prefix    = "k3s-node"
+  instance_count = 1
 }
