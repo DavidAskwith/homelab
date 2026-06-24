@@ -10,8 +10,8 @@
 
 ## Authenticateing a new client
 
-1. On an authenticated client, run `incus config trust add <hostname>:<new-client-name>`
-2. Add the host on the new client `incus remote add <hostname> <ip>`
+1. On an authenticated client, run `incus config trust add <HOSTNAME>:<NEW_CLIENT_NAME>`
+2. Add the host on the new client `incus remote add <HOSTNAME> <ip>`
 3. Alternatively, you can copy the `client.key` and `client.crt` from the authenticated client to the new client in `~/.config/incus` to authenticate with the server.
 
 ## Authentication
@@ -29,9 +29,14 @@ Default auth is TLS `client.key` and `client.crt` are stored in `~/.config/incus
 - IP: `10.0.0.1<0-9>`
 
 ## Virtual Server Nodes
-- Host Name: `node-<type>-<0-91-9>`
-- IP: `10.0.0.2{0-9}`
+- Host Name: `<TYPE>-node-<ENV><0-91-9>`
+- IP: `10.0.0.2<0-9>`
 
-## Virtual Server Nodes
-- Host Name:
-- IP: `10.0.0.<3-91-9>`
+# Tofu
+
+## Environments
+
+Environments are supported via workspaces.
+
+`incus workspace create <WORKSPACE_NAME>`
+
