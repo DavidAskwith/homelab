@@ -49,3 +49,13 @@ variable "cpu" {
   type        = number
   default     = 2
 }
+
+variable "devices" {
+  description = "Device settings for the instance. This is a map of device names to their properties."
+  type        = set(object({
+    name = string
+    type = string
+    properties = map(string)
+  }))
+  default     = null
+}

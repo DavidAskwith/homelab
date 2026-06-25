@@ -11,6 +11,15 @@ resource "incus_instance" "ubuntu_instance" {
     "cloud-init.user-data" = file("${path.module}/cloud_init.yaml")
   }
 
+  dynamic "device" {
+    for_each = var.devices != null ? var.devices : []
+    content {
+      name       = device.value.name
+      type       = device.value.type
+      properties = device.value.properties
+    }
+  }
+
   wait_for {
     type = "cloud-init"
   }

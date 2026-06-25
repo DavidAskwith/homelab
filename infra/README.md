@@ -7,6 +7,14 @@
     - Enable the "Degraded boot security (no TPM 2.0 module)" for the m93p since it only has TPM 1.2
 2. Follow the install [instructions](https://linuxcontainers.org/incus-os/docs/main/getting-started/installation/physical)
 3. Follow connection [instructions](https://linuxcontainers.org/incus-os/docs/main/getting-started/access/) to test and setup the auth for tofu
+4. Configuring the host for network for external instance access, run the following commands on the host [Instructions](https://linuxcontainers.org/incus-os/docs/main/tutorials/network-direct-attach/) everything after the config edit is handled in tofu.
+    1. `incus admin os system network edit <HOST>:`
+    2. Add the following in the addresses section
+    ```roles:
+         -instances
+    ```
+
+
 
 ## Authenticateing a new client
 
